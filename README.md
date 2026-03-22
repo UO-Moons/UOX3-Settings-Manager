@@ -54,7 +54,7 @@ Screenshots
 
 Example:
 
-![Main UI](docs/screenshot.png)
+![Main UI](docs/newscreenshot.png)
 Project Structure
 Models
 Handles INI structure and data representation
