@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <ApplicationIcon>oybv6-ri0dz-001.ico</ApplicationIcon>
+    <AssemblyName>UOX3SettingsManager</AssemblyName>
+    <RootNamespace>UOX3SettingsManager</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="oybv6-ri0dz-001.ico" />
+  </ItemGroup>
+
+</Project>

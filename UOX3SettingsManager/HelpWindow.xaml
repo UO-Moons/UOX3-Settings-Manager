@@ -1,0 +1,121 @@
+﻿<Window x:Class="UOX3SettingsManager.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UOX3 Settings Manager Help"
+        Height="420"
+        Width="620"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource WindowBackgroundBrush}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="0,0,0,12"
+                   Foreground="{DynamicResource ControlForegroundBrush}">UOX3 Settings Manager Help</TextBlock>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Margin="0,0,0,12"
+                   TextWrapping="Wrap"
+                   Foreground="{DynamicResource ControlForegroundBrush}">
+            Use this tool to browse, edit, save, and launch UOX3 using values from uox.ini.
+            Optional HTML documentation can be loaded for setting tooltips.
+                </TextBlock>
+
+                <!-- Quick Start -->
+                <TextBlock FontWeight="Bold"
+                   Margin="0,0,0,6"
+                   Foreground="{DynamicResource ControlForegroundBrush}">
+            Quick Start
+                </TextBlock>
+
+                <StackPanel Margin="10,0,0,12">
+                    <TextBlock Text="1. Browse to UOX3.exe"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="2. Browse to uox.ini"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="3. Optional: Browse to index.html for setting hints"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="4. Click Load"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="5. Edit values in the settings grid"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="6. Save or Save and Launch"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                </StackPanel>
+
+                <!-- Shortcuts -->
+                <TextBlock FontWeight="Bold"
+                   Margin="0,0,0,6"
+                   Foreground="{DynamicResource ControlForegroundBrush}">
+            Shortcuts
+                </TextBlock>
+
+                <StackPanel Margin="10,0,0,12">
+                    <TextBlock Text="Ctrl + Z  - Undo"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="Ctrl + Y  - Redo"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                </StackPanel>
+
+                <!-- Tips -->
+                <TextBlock FontWeight="Bold"
+                   Margin="0,0,0,6"
+                   Foreground="{DynamicResource ControlForegroundBrush}">
+            Tips
+                </TextBlock>
+
+                <StackPanel Margin="10,0,0,12">
+                    <TextBlock Text="• Hover over a settings row to see documentation hints (if Docs HTML is loaded)"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="• Modified rows are highlighted"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="• Undo Selected reverts the selected row"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                    <TextBlock Text="• Undo All reverts all unsaved changes"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+                </StackPanel>
+
+                <!-- Links -->
+                <TextBlock FontWeight="Bold"
+                   Margin="0,0,0,6"
+                   Foreground="{DynamicResource ControlForegroundBrush}">
+            Links
+                </TextBlock>
+
+                <StackPanel Margin="10,0,0,12">
+                    <TextBlock>
+                <Hyperlink NavigateUri="https://www.uox3.org/"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    Visit uox3.org
+                </Hyperlink>
+                    </TextBlock>
+
+                    <TextBlock Margin="0,6,0,0">
+                <Hyperlink NavigateUri="https://www.uox3.org/docs/index.html"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    Open UOX3 documentation
+                </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="2"
+                Width="90"
+                Height="28"
+                Margin="0,12,0,0"
+                HorizontalAlignment="Right"
+                Click="CloseButton_Click">Close</Button>
+    </Grid>
+</Window>

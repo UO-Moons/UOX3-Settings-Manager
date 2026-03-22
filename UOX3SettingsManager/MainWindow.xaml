@@ -1,0 +1,296 @@
+﻿<Window x:Class="UOX3SettingsManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UOX3 Settings Manager"
+        Height="740"
+        Width="1325"
+        MinHeight="680"
+        MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
+        Background="{DynamicResource WindowBackgroundBrush}">
+
+    <Window.InputBindings>
+        <KeyBinding Key="Z" Modifiers="Control" Command="{Binding UndoCommand}" />
+        <KeyBinding Key="Y" Modifiers="Control" Command="{Binding RedoCommand}" />
+    </Window.InputBindings>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="90" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource ControlForegroundBrush}">UOX3 Settings Manager</TextBlock>
+
+            <Button Grid.Column="1"
+                    Margin="0,0,10,0"
+                    Click="HelpButton_Click">Help</Button>
+
+            <Button Grid.Column="2"
+                    Click="AboutButton_Click">About</Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="110" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">UOX3 EXE</TextBlock>
+
+            <TextBox x:Name="UoxExecutablePathTextBox"
+                     Grid.Column="1"
+                     Margin="0,0,10,0"
+                     Background="{DynamicResource ControlBackgroundBrush}"
+                     Foreground="{DynamicResource ControlForegroundBrush}" />
+
+            <Button Grid.Column="2" Click="BrowseExecutableButton_Click">Browse EXE</Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="110" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">UOX3 INI</TextBlock>
+
+            <TextBox x:Name="IniFilePathTextBox"
+                     Grid.Column="1"
+                     Margin="0,0,10,0"
+                     Background="{DynamicResource ControlBackgroundBrush}"
+                     Foreground="{DynamicResource ControlForegroundBrush}" />
+
+            <Button Grid.Column="2" Click="BrowseIniButton_Click">Browse INI</Button>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="110" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">Docs HTML</TextBlock>
+
+            <TextBox x:Name="DocsHtmlPathTextBox"
+                     Grid.Column="1"
+                     Margin="0,0,10,0"
+                     Background="{DynamicResource ControlBackgroundBrush}"
+                     Foreground="{DynamicResource ControlForegroundBrush}" />
+
+            <Button Grid.Column="2" Click="BrowseDocsButton_Click">Browse Docs</Button>
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="170" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">Search</TextBlock>
+
+            <TextBox x:Name="SearchTextBox"
+                     Grid.Column="1"
+                     Margin="0,0,10,0"
+                     TextChanged="SearchTextBox_TextChanged"
+                     Background="{DynamicResource ControlBackgroundBrush}"
+                     Foreground="{DynamicResource ControlForegroundBrush}" />
+
+            <TextBlock Grid.Column="2"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">Section</TextBlock>
+
+            <TextBlock x:Name="SelectedSectionTextBlock"
+                       Grid.Column="3"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Text="None"
+                       TextTrimming="CharacterEllipsis"
+                       Foreground="{DynamicResource ControlForegroundBrush}" />
+
+            <TextBlock Grid.Column="4"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"
+                       Foreground="{DynamicResource ControlForegroundBrush}">Theme</TextBlock>
+
+            <ComboBox x:Name="ThemeComboBox"
+                      Grid.Column="5"
+                      Margin="0,0,10,0"
+                      SelectionChanged="ThemeComboBox_SelectionChanged"
+                      Background="{DynamicResource ControlBackgroundBrush}"
+                      Foreground="{DynamicResource ControlForegroundBrush}"
+                      BorderBrush="{DynamicResource BorderBrushColor}"
+                      TextElement.Foreground="{DynamicResource ControlForegroundBrush}">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#3C3C40" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#F0F0F0" />
+
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground" Value="{DynamicResource ControlForegroundBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
+                        <Style.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource DataGridHeaderBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource ControlForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource DataGridHeaderBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource ControlForegroundBrush}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Resources>
+
+                <ComboBoxItem Content="Light" />
+                <ComboBoxItem Content="Dark" />
+            </ComboBox>
+
+            <CheckBox x:Name="BackupBeforeSaveCheckBox"
+                    Grid.Column="6"
+                    VerticalAlignment="Center"
+                    IsChecked="True"
+                    Content="Backup before save"
+                    Foreground="{DynamicResource ControlForegroundBrush}"
+                    Checked="BackupBeforeSaveCheckBox_Changed"
+                    Unchecked="BackupBeforeSaveCheckBox_Changed" />
+        </Grid>
+
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,10">
+            <Button Width="80" Margin="0,0,10,0" Click="LoadIniButton_Click">Load</Button>
+            <Button Width="80" Margin="0,0,10,0" Click="SaveIniButton_Click">Save</Button>
+            <Button Width="130" Margin="0,0,20,0" Click="SaveAndLaunchButton_Click">Save and Launch</Button>
+
+            <Button Width="80" Margin="0,0,10,0" Click="UndoLastButton_Click">Undo</Button>
+            <Button Width="80" Margin="0,0,20,0" Command="{Binding RedoCommand}">Redo</Button>
+
+            <Button Width="110" Margin="0,0,10,0" Click="UndoSelectedButton_Click">Undo Selected</Button>
+            <Button Width="90" Click="UndoAllButton_Click">Undo All</Button>
+        </StackPanel>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0"
+                      Header="Sections"
+                      Foreground="{DynamicResource GroupBoxForegroundBrush}">
+                <Grid>
+                    <ListBox x:Name="SectionsListBox"
+                             DisplayMemberPath="Name"
+                             SelectionChanged="SectionsListBox_SelectionChanged"
+                             Background="{DynamicResource ControlBackgroundBrush}"
+                             Foreground="{DynamicResource ControlForegroundBrush}" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Column="2"
+                      Header="Settings"
+                      Foreground="{DynamicResource GroupBoxForegroundBrush}">
+                <Grid>
+                    <DataGrid x:Name="EntriesDataGrid"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              IsReadOnly="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              HeadersVisibility="Column"
+                              GridLinesVisibility="All"
+                              Margin="0"
+                              BeginningEdit="EntriesDataGrid_BeginningEdit"
+                              CellEditEnding="EntriesDataGrid_CellEditEnding"
+                              Background="{DynamicResource ControlBackgroundBrush}"
+                              Foreground="{DynamicResource ControlForegroundBrush}"
+                              RowBackground="{DynamicResource ControlBackgroundBrush}"
+                              AlternatingRowBackground="{DynamicResource ControlBackgroundBrush}"
+                              BorderBrush="{DynamicResource BorderBrushColor}">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="{DynamicResource DataGridHeaderBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource ControlForegroundBrush}" />
+                                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushColor}" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="ToolTip" Value="{Binding HintText}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsModified}" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="Background" Value="{DynamicResource ModifiedRowBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Key"
+                                                Binding="{Binding KeyName}"
+                                                Width="300"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Value"
+                                                Binding="{Binding ValueText, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*" />
+                            <DataGridTextColumn Header="Status"
+                                                Binding="{Binding StatusText}"
+                                                Width="100"
+                                                IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <TextBlock x:Name="StatusTextBlock"
+                   Grid.Row="7"
+                   Margin="0,10,0,0"
+                   TextWrapping="Wrap"
+                   Foreground="{DynamicResource StatusForegroundBrush}" />
+    </Grid>
+</Window>
